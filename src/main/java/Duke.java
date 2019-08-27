@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.*;
 
 public class Duke {
     public static void main(String[] args) {
@@ -11,14 +13,23 @@ public class Duke {
         System.out.println(" Hello! I'm Duke\n" +
                 "What can I do for you?");
         String s;
+        int counter = 0;
         Scanner in = new Scanner(System.in);
+        ArrayList<String> list = new ArrayList<String>();
         while (true) {
             s = in.nextLine();
-            if (s.equals("bye")) {
+            if (s.equals("list")) {
+                Iterator itr = list.iterator();
+                while (itr.hasNext())
+                    System.out.println(itr.next());
+            } else if(s.equals("bye")) {
                 System.out.println("Bye. Hope to see you again soon!");
                 break;
-            } else
-                System.out.println(s);
+            } else {
+                counter++;
+                System.out.println("added: " + s);
+                list.add(counter + ". " + s);
+            }
         }
     }
 }
