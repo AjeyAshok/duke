@@ -1,7 +1,5 @@
 package main.java;
-
 import java.util.*;
-
 public class Task {
     private String A;
     private boolean isDone;
