@@ -1,3 +1,7 @@
+package main.java;
+
+import java.util.*;
+
 public class Task {
     private String A;
     private boolean isDone;
@@ -8,7 +12,7 @@ public class Task {
     }
 
     public String getStatusIcon() {
-        return (isDone ? "[\u2713]" : "[\u2718]");
+        return (isDone ? "[YES]" : "[NO]");
     }
 
     public void MarkAsDone() {
