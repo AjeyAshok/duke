@@ -51,13 +51,6 @@ public class Duke {
                 System.out.println("Now you have" + " " + list.size() + " " + "tasks in the list.");
 
             } else if (in[0].equals("deadline")) {
-
-               try {
-                   DukeDeadline(list, s);
-               } catch(DukeException m){
-                   DukeHandleException(m);
-               }
-
                 try {
                     DukeDeadline(list, s);
                 } catch (DukeException m) {
@@ -74,13 +67,6 @@ public class Duke {
                 data_handler.dataOUT();
 
             } else if (in[0].equals("event")) {
-
-               try {
-                   DukeEvent(list, s);
-               } catch(DukeException m){
-                   DukeHandleException(m);
-               }
-
                 try {
                     DukeEvent(list, s);
                 } catch (DukeException m) {
