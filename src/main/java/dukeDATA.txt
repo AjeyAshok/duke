@@ -1,0 +1,4 @@
+T | 0 |  run
+D | 0 | qwe  | sunday
+E | 0 | qaz  | 4pm
+T | 0 |  eattt
