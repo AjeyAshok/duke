@@ -24,10 +24,11 @@ public class Duke {
 
         System.out.println("Hello! I'm Duke\n" +
                 "What can I do for you?");
+
+
         while (true) {
             String s = scan.nextLine(); //Takes in the input by user
             String[] in = s.split(" "); //Delimtter function to split a string according to the parameter
-
 
             if (s.equals("list")) {
                 for (int i = 0; i < list.size(); i++) {
@@ -42,42 +43,61 @@ public class Duke {
                 list.get(point).MarkAsDone(); //Changes the task marker
                 System.out.println("Nice! I've marked this task as done:" + "\n" + list.get(point));
 
+            } else if (in[0].equals("delete")) {
+                int remover = Integer.parseInt(in[1]) - 1;
+                list.remove(remover);
+                System.out.println("Noted. I've removed this task");
+                System.out.println(list.get(remover));
+                System.out.println("Now you have" + " " + list.size() + " " + "tasks in the list.");
+
             } else if (in[0].equals("deadline")) {
+
                try {
-                   DukeDeadline(list, s, in);
+                   DukeDeadline(list, s);
                } catch(DukeException m){
                    DukeHandleException(m);
                }
+
+                try {
+                    DukeDeadline(list, s);
+                } catch (DukeException m) {
+                    DukeHandleException(m);
+                }
                 data_handler.dataOUT();
 
             } else if (in[0].equals("todo")) {
                 try {
-                    DukeToDo(list, s, in);
-                } catch(DukeException m){
+                    DukeToDo(list, s);
+                } catch (DukeException m) {
                     DukeHandleException(m);
                 }
                 data_handler.dataOUT();
 
             } else if (in[0].equals("event")) {
+
                try {
-                   DukeEvent(list, s, in);
+                   DukeEvent(list, s);
                } catch(DukeException m){
                    DukeHandleException(m);
                }
+
+                try {
+                    DukeEvent(list, s);
+                } catch (DukeException m) {
+                    DukeHandleException(m);
+                }
                 data_handler.dataOUT();
 
             } else {
-                DukeHandleException(new DukeException( "☹ OOPS!!! I'm sorry, but I don't know what that means :-("));
+                DukeHandleException(new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-("));
             }
         }
-
     }
 
-
-    private static void DukeDeadline(ArrayList<Task> list, String s, String[] in) throws DukeException {
+    private static void DukeDeadline(List<Task> list, String s) throws DukeException {
         String dead = s.substring(9);
         String[] newInput = dead.split("/by ");
-        if(newInput[1].equals("")){
+        if (newInput[1].equals("")) {
             throw new DukeException("    ☹ OOPS!!! You need to add the due date for the deadline!");
         }
         Task B = new Deadline(newInput[0], newInput[1]);
@@ -87,10 +107,10 @@ public class Duke {
         System.out.println("Now you have" + " " + list.size() + " " + "tasks in the list.");
     }
 
-    private static void DukeEvent(ArrayList<Task> list, String s, String[] in) throws DukeException {
+    private static void DukeEvent(List<Task> list, String s) throws DukeException {
         String eve = s.substring(6);
         String[] newInput = eve.split("/at ");
-        if(newInput[1].equals("")){
+        if (newInput[1].equals("")) {
             throw new DukeException("    ☹ OOPS!!! You need to add the timing for the event!");
         }
         Task B2 = new Event(newInput[0], newInput[1]);
@@ -100,9 +120,9 @@ public class Duke {
         System.out.println("Now you have" + " " + list.size() + " " + "tasks in the list.");
     }
 
-    private static void DukeToDo(ArrayList<Task> list, String s, String[] in) throws DukeException {
+    private static void DukeToDo(List<Task> list, String s) throws DukeException {
         String to = s.substring(4);
-        if(to.equals("")){
+        if (to.equals("")) {
             throw new DukeException("    ☹ OOPS!!! The description of a todo cannot be empty.");
         }
         Task B1 = new ToDo(to);
@@ -112,8 +132,7 @@ public class Duke {
         System.out.println("Now you have" + " " + list.size() + " " + "tasks in the list.");
     }
 
-    private static void DukeHandleException(DukeException m){
+    private static void DukeHandleException(DukeException m) {
         System.out.println(m.getMessage());
     }
 }
-
