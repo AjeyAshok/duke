@@ -1,11 +1,20 @@
 package main.java;
-
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.*;
 
 public class Duke {
-    public static void main(String[] args) {
+    private static ArrayList<Task> list = new ArrayList<>();
+    private static Scanner scan = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        parser data_handler = new parser();
+        list = data_handler.dataIN();
+
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -14,11 +23,7 @@ public class Duke {
         // System.out.println("Hello from\n" + logo);
 
         System.out.println("Hello! I'm Duke\n" +
-                           "What can I do for you?");
-
-        Scanner scan = new Scanner(System.in); //To include scanner to take in user input
-        ArrayList<Task> list = new ArrayList<Task>(); //Creates an array of type Task
-
+                "What can I do for you?");
         while (true) {
             String s = scan.nextLine(); //Takes in the input by user
             String[] in = s.split(" "); //Delimtter function to split a string according to the parameter
@@ -43,6 +48,7 @@ public class Duke {
                } catch(DukeException m){
                    DukeHandleException(m);
                }
+                data_handler.dataOUT();
 
             } else if (in[0].equals("todo")) {
                 try {
@@ -50,6 +56,7 @@ public class Duke {
                 } catch(DukeException m){
                     DukeHandleException(m);
                 }
+                data_handler.dataOUT();
 
             } else if (in[0].equals("event")) {
                try {
@@ -57,6 +64,7 @@ public class Duke {
                } catch(DukeException m){
                    DukeHandleException(m);
                }
+                data_handler.dataOUT();
 
             } else {
                 DukeHandleException(new DukeException( "☹ OOPS!!! I'm sorry, but I don't know what that means :-("));

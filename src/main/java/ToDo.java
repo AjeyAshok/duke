@@ -13,4 +13,9 @@ public class ToDo extends Task {
     public String toString() {
         return "[T]" + getStatusIcon() + " " + super.toString();
     }
+
+    @Override
+    public String toTxt() {
+        return "T | " + (this.getisDone() ? "1" : "0") + " | " + this.getDescription();
+    }
 }

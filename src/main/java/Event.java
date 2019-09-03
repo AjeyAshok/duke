@@ -14,4 +14,9 @@ public class Event extends Task {
     public String toString() {
         return "[E]" + getStatusIcon() + " " + super.toString() + " (at: " + at + ")";
     }
+
+    @Override
+    public String toTxt() {
+        return "E | " + (this.getisDone() ? "1" : "0") + " | " + super.getDescription() + " | " + this.at;
+    }
 }
