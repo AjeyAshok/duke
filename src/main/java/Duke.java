@@ -10,12 +10,12 @@ import java.util.Scanner;
 import java.util.*;
 
 public class Duke {
-    private static List<Task> list = new ArrayList<>();
-    //Creates an array of type Task
-  private static Scanner scan = new Scanner(System.in);
-   // private List<Task> list = new ArrayList<Task>();
-
+    private static ArrayList<Task> list = new ArrayList<>();
+    private static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) throws IOException {
+        parser data_handler = new parser();
+        list = data_handler.dataIN();
+
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -25,18 +25,10 @@ public class Duke {
 
         System.out.println("Hello! I'm Duke\n" +
                 "What can I do for you?");
-        //Read in
-     /*   try {
-            list = dataIN();
-        } catch (IOException Io) {
-            list = new ArrayList<>();
-        }*/
-        //  list = dataIN();
 
         while (true) {
             String s = scan.nextLine(); //Takes in the input by user
             String[] in = s.split(" "); //Delimtter function to split a string according to the parameter
-
 
             if (s.equals("list")) {
                 for (int i = 0; i < list.size(); i++) {
@@ -44,7 +36,6 @@ public class Duke {
                 }
             } else if (s.equals("bye")) {
                 System.out.println("Bye. Hope to see you again soon!");
-              //  dataOUT();
                 break;
 
             } else if (in[0].equals("done")) {
@@ -65,6 +56,7 @@ public class Duke {
                 } catch (DukeException m) {
                     DukeHandleException(m);
                 }
+                data_handler.dataOUT();
 
             } else if (in[0].equals("todo")) {
                 try {
@@ -72,6 +64,7 @@ public class Duke {
                 } catch (DukeException m) {
                     DukeHandleException(m);
                 }
+                data_handler.dataOUT();
 
             } else if (in[0].equals("event")) {
                 try {
@@ -79,62 +72,13 @@ public class Duke {
                 } catch (DukeException m) {
                     DukeHandleException(m);
                 }
+                data_handler.dataOUT();
 
             } else {
                 DukeHandleException(new DukeException("☹ OOPS!!! I'm sorry, but I don't know what that means :-("));
             }
         }
-   /*     try {
-            dataOUT();
-        } catch (IOException Io) {
-            System.out.println(Io.getMessage());
-        }*/
     }
-/*
-   private static void dataOUT() throws IOException {
-        System.out.println("testing");
-        FileWriter fileW = new FileWriter(System.getProperty("user.dir") + "/src/main/java/dukeDATA.txt", true);
-        for (Task tsk : list) {
-            fileW.write(tsk.toTxt() + "\n");
-        }
-        fileW.close();
-    }
-
-
-    private static List<Task> dataIN() throws FileNotFoundException {
-        List<Task> tasks = new ArrayList<Task>();
-        File file = new File(System.getProperty("user.dir") + "/src/main/java/dukeDATA.txt");
-//        File file = new File("./data/dukeDATA.txt");
-        Scanner scanner = new Scanner(file);
-        System.out.println("asdfghjk");
-        while (scanner.hasNext()) {
-            String sss = scanner.next();
-            System.out.println(sss);
-            String[] line = scanner.nextLine().split("\\|");
-            System.out.println("line 1:" + line[0]);
-            for (String s : line){
-                System.out.println(s);
-            }
-            String temp = line[1].replaceAll("\\s+","");
-            boolean stat = Integer.parseInt(temp) == 1;
-            System.out.println("line 1:" + line[0]);
-            switch (line[0]) {
-                case "D":
-                    tasks.add(new Deadline(line[2], line[3]));
-                    System.out.println("asdfgCCCCCCChjk");
-                    break;
-                case "E":
-                    tasks.add(new Event(line[2], line[3]));
-                    System.out.println("asdfghBBBBjk");
-                    break;
-                case "T":
-                    tasks.add(new ToDo(line[2]));
-                    System.out.println("asdfgAAAAAAAhjk");
-                    break;
-            }
-        }
-        return tasks;
-    } */
 
     private static void DukeDeadline(List<Task> list, String s) throws DukeException {
         String dead = s.substring(9);
@@ -177,37 +121,4 @@ public class Duke {
     private static void DukeHandleException(DukeException m) {
         System.out.println(m.getMessage());
     }
-
-  //  private static List<Task> DataIN() throws FileNotFoundException {
-
-//        List<Task> tasks = new ArrayList<>();
-//        File file = new File(System.getProperty("user.dir") + "/src/main/java/dukeDATA.txt");
-//        Scanner scanner = new Scanner(file);
-//        while(scanner.hasNext()) {
-//            String[] line = Scanner.nextline().split(" \\| ");
-//            boolean stat = Integer.parseInt(line[1]) == 1;
-//            switch (line[0]) {
-//                case "D":
-//                    tasks.add(new DukeDeadline(tasks, line));
-//                    break;
-//                case "E":
-//                    tasks.add(new DukeEvent(tasks, line));
-//                    break;
-//                case "T":
-//                    tasks.add(new DukeToDo(tasks, line));
-//                    break;
-//            }
-//        }
-        //return tasks;
- //   }
-
- //   private static void DataOUT() throws IOException {
-//        FileWriter fileW = new FileWriter(System.getProperty("user.dir") + "/src/main/java/dukeDATA.txt");
-//        for(Task tsk : list) {
-//            fileW.write(tsk.toTxt() + "\n");
-//        }
-//        fileW.close();
-//    }
-  //  }
 }
-
