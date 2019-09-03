@@ -49,6 +49,7 @@ public class Duke {
                 System.out.println("Noted. I've removed this task");
                 System.out.println(list.get(remover));
                 System.out.println("Now you have" + " " + list.size() + " " + "tasks in the list.");
+                data_handler.dataOUT();
 
             } else if (in[0].equals("deadline")) {
                 try {

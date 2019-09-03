@@ -16,7 +16,6 @@ public class parser {
     }
 
     public void dataOUT() throws IOException {
-        System.out.println("testing");
         FileWriter fileW = new FileWriter(System.getProperty("user.dir") + "/src/main/java/dukeDATA.txt", false);
         for (Task tsk : tasks) {
             fileW.write(tsk.toTxt() + "\n");
