@@ -51,6 +51,14 @@ public class Duke {
                 System.out.println("Now you have" + " " + list.size() + " " + "tasks in the list.");
                 data_handler.dataOUT();
 
+            } else if (in[0].equals("find")) {
+                System.out.println("Here are the matching tasks in your list:");
+                int count = 0;
+                for(int i=0; i < list.size(); i++){
+                    if(list.get(i).getDescription().contains(in[1]))
+                        System.out.println((++count) + ". " + list.get(i).toString());
+                }
+
             } else if (in[0].equals("deadline")) {
                 try {
                     DukeDeadline(list, s);
