@@ -2,8 +2,11 @@ package main.java;
 import java.util.*;
 public class Task {
 
+
+    protected Date DateNTime;
     private String description;
     private boolean isDone;
+
 
     public Task(String A){
         this.description = A;

@@ -2,8 +2,10 @@ package main.java;
 import java.util.*;
 
 public class Event extends Task {
-
     protected String at;
+    protected String start;
+    protected String end;
+
 
     public Event(String description, String at) {
         super(description);
@@ -12,7 +14,13 @@ public class Event extends Task {
 
     @Override
     public String toString() {
-        return "[E]" + getStatusIcon() + " " + super.toString() + " (at: " + at + ")";
+        String temp = "";
+        try {
+            return "[E]" + getStatusIcon() + " " + super.toString() + " (at: " + DateTimeParser.EventDT(at) + ")";
+        } catch (DukeException e) {
+            e.printStackTrace();
+        }
+        return temp;
     }
 
     @Override

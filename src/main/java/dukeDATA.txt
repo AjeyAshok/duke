@@ -1,5 +1,24 @@
-T | 0 |      eat
-T | 0 |     eat
-T | 0 |    fishh
-T | 0 |   return book
-D | 0 | take book  | sunday
+T | 0 |                       eat
+T | 0 |                      eat
+T | 0 |                     fishh
+T | 0 |                    return book
+D | 0 |                  take book                   |                  sunday
+D | 0 |                 buy book                  |                 2/2/12
+T | 0 |                 superrrun
+T | 0 |                run
+D | 0 |               eat                |               02/04/2018 1800
+D | 0 |              foo               |              2/2/2102 1800
+D | 0 |             foo1              |             2/2/2012 1800
+E | 0 |            qwe             |            2/2/2012 1400-1500
+D | 0 |           rewq            |           2/2/2012 1500
+D | 0 |          qazx           |          22/2/2012 1400
+E | 0 |         qwerty          |         3/3/3102 1200-1300
+D | 0 |        jaknwvij         |        3/3/2012 1500
+D | 0 |       dvv        |       2/2/2122 1200
+D | 0 |       dvv        |       2/2/2122 0000
+D | 0 |      fvaev       |      2/2/2121 1200
+D | 0 |     wvawv      |     2/2/1212 1300
+D | 0 |    wevwv     |    2/2/1212 2400
+D | 0 |   pou    |   2/2/1232 1234
+D | 0 |  pojwofhu   |  2/2/1234 1900
+D | 0 | wewef  | 1/2/4332 2312

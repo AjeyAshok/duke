@@ -23,7 +23,7 @@ public class parser {
         fileW.close();
     }
 
-    public ArrayList<Task> dataIN() throws FileNotFoundException { //reader
+    public ArrayList<Task> dataIN() throws FileNotFoundException, DukeException { //reader
 
         File file = new File(System.getProperty("user.dir") + "/src/main/java/dukeDATA.txt");
         Scanner scanner = new Scanner(file);
@@ -46,8 +46,6 @@ public class parser {
                     break;
             }
         }
-        for (int i = 0; i < tasks.size(); i++)
-            System.out.println(tasks.get(i));
         return tasks;
     }
 }

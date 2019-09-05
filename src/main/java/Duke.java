@@ -11,7 +11,9 @@ import java.util.*;
 public class Duke {
     private static ArrayList<Task> list = new ArrayList<>();
     private static Scanner scan = new Scanner(System.in);
-    public static void main(String[] args) throws IOException {
+    private static DateTimeParser dateTimer = new DateTimeParser();
+
+    public static void main(String[] args) throws IOException, DukeException {
         parser data_handler = new parser();
         list = data_handler.dataIN();
 
@@ -96,6 +98,7 @@ public class Duke {
             throw new DukeException("    ☹ OOPS!!! You need to add the due date for the deadline!");
         }
         Task B = new Deadline(newInput[0], newInput[1]);
+        DateTimeParser.DeadlineDT(newInput[1]);
         list.add(B);
         System.out.println("Got it. I've added this task:");
         System.out.println("\t" + B);
@@ -109,6 +112,8 @@ public class Duke {
             throw new DukeException("    ☹ OOPS!!! You need to add the timing for the event!");
         }
         Task B2 = new Event(newInput[0], newInput[1]);
+        String[] timing = newInput[1].split("-");
+        DateTimeParser.EventDT(newInput[1]);
         list.add(B2);
         System.out.println("Got it. I've added this task:");
         System.out.println("\t" + B2);
