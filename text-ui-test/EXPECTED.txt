@@ -1,0 +1,20 @@
+ ____        _
+|  _ \ _   _| | _____
+| | | | | | | |/ / _ \
+| |_| | |_| |   <  __/
+|____/ \__,_|_|\_\___|
+
+Hello! I'm Duke
+What can I do for you?
+
+There are no tasks in the list
+
+Got it. I've added this task:
+        [T][NO]  run
+Now you have 1 tasks in the list.
+
+1.[T][NO]  run
+
+â?? OOPS!!! I'm sorry, but I don't know what that means :-(
+
+Bye. Hope to see you again soon!

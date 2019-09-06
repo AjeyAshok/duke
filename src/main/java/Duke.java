@@ -22,8 +22,7 @@ public class Duke {
                 + "| | | | | | | |/ / _ \\\n"
                 + "| |_| | |_| |   <  __/\n"
                 + "|____/ \\__,_|_|\\_\\___|\n";
-        // System.out.println("Hello from\n" + logo);
-
+        System.out.println("Hello from\n" + logo);
         System.out.println("Hello! I'm Duke\n" +
                 "What can I do for you?");
 
@@ -33,6 +32,8 @@ public class Duke {
             String[] in = s.split(" "); //Delimtter function to split a string according to the parameter
 
             if (s.equals("list")) {
+                if(list.size() == 0)
+                    System.out.println("There are no tasks in the list");
                 for (int i = 0; i < list.size(); i++) {
                     System.out.println((i + 1) + "." + list.get(i));
                 }
@@ -47,10 +48,10 @@ public class Duke {
 
             } else if (in[0].equals("delete")) {
                 int remover = Integer.parseInt(in[1]) - 1;
-                list.remove(remover);
                 System.out.println("Noted. I've removed this task");
-                System.out.println(list.get(remover));
-                System.out.println("Now you have" + " " + list.size() + " " + "tasks in the list.");
+                System.out.println("   " + list.get(remover));
+                System.out.println("Now you have" + " " + list.size() + " " + "task(s) in the list.");
+                list.remove(remover);
                 data_handler.dataOUT();
 
             } else if (in[0].equals("find")) {
