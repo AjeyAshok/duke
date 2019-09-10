@@ -1,52 +1,78 @@
 package main.java;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
 
 public class parser {
-    public ArrayList<Task> tasks;
+    ui userI = new ui();
+    protected String taskType; //Type of task : D,E,T
+    protected String s; // User input
+    protected String[] in; // User input after spliting at the " " space
+    protected String Description;
+    protected String findDes;
+    protected String by;
+    protected String at;
+    protected String[] ToFrom;
+    protected int point;
 
-    parser() {
-        tasks = new ArrayList<Task>();
+    public parser(String s) {
+        this.s = s;
+        this.in = s.split(" "); //Delimtter function to split a string according to the parameter
+        this.taskType = this.in[0];
+        this.makeTask();
     }
 
-    public void dataOUT() throws IOException {
-        FileWriter fileW = new FileWriter(System.getProperty("user.dir") + "/src/main/java/dukeDATA.txt", false);
-        for (Task tsk : tasks) {
-            fileW.write(tsk.toTxt() + "\n");
+    public void makeTask() {
+        if(this.taskType.equals("todo")) {
+            this.Description = this.s.substring(4);
+
+        } else if (this.taskType.equals("deadline")) {
+            String dead = s.substring(9);
+            String[] newInput = dead.split("/by ");
+            this.by = newInput[1];
+            this.Description = newInput[0];
+
+        } else if (this.taskType.equals("event")) {
+            String eve = s.substring(6);
+            String[] newInput = eve.split("/at ");
+            this.at = newInput[1];
+            this.Description = newInput[0];
+
+        } else if (this.taskType.equals("done")) {
+            int point = Integer.parseInt(in[1]) - 1;
+
+        } else if (this.taskType.equals("find")) {
+            this.findDes = in[1];
+
+        } else if (this.taskType.equals("delete")) {
+            this.point = Integer.parseInt(in[1]) - 1;
+
         }
-        fileW.close();
     }
 
-    public ArrayList<Task> dataIN() throws FileNotFoundException, DukeException { //reader
+    public String getTaskType() {
+        return taskType;
+    }
 
-        File file = new File(System.getProperty("user.dir") + "/src/main/java/dukeDATA.txt");
-        Scanner scanner = new Scanner(file);
-        while (scanner.hasNext()) { //tester
-            String[] line = scanner.nextLine().split("\\|");
-            String type = line[0].trim();
-            String status = line[1].trim();
-            String des = line[2].trim();
+    public int getPoint() {
+        return point;
+    }
 
-            boolean stat = Integer.parseInt(status) == 1;
-            switch (type) {
-                case "D":
-                    tasks.add(new Deadline(line[2], line[3]));
-                    break;
-                case "E":
-                    tasks.add(new Event(line[2], line[3]));
-                    break;
-                case "T":
-                    tasks.add(new ToDo(line[2]));
-                    break;
-            }
-        }
-        return tasks;
+    public String getBy() {
+        return by;
+    }
+
+    public String getAt() {
+        return at;
+    }
+
+    public String getFindDes() {
+        return findDes;
+    }
+
+    public String[] getTiming() {
+        return ToFrom;
+    }
+
+    public String getDescription() {
+        return Description;
     }
 }
 
