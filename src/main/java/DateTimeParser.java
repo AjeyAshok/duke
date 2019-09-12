@@ -3,7 +3,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateTimeParser {
-
+    /**
+     * Constructor to check and format the time and date for the DEADLINE task
+     *
+     * @param by substring of the user input that contains the data on date and time of task
+     *
+     * @return formatted date and time
+     *
+     * @throws DukeException when the user input doesn't follow the given date and time input format
+     */
     public static String DeadlineDT(String by) throws DukeException {
         //Take in the input as dd/mm/year time
         String[] input = by.split(" ", 2); //split the date from time
@@ -37,9 +45,18 @@ public class DateTimeParser {
         }
     }
 
-    public static String EventDT(String by) throws DukeException {
+    /**
+     * Constructor to check and format the time and date for the EVENT task
+     *
+     * @param at substring of the user input that contains the data on date and time of task
+     *
+     * @return formatted date and time
+     *
+     * @throws DukeException when the user input doesn't follow the given date and time input format
+     */
+    public static String EventDT(String at) throws DukeException {
         //Take in the input as dd/mm/year time
-        String[] input = by.split(" ", 2); //split the date from time
+        String[] input = at.split(" ", 2); //split the date from time
         if(input.length != 2) {
             throw new DukeException("     OOPS! Wrong format for EVENT. Please key in /at 1/1/2019 1500-1600");
         }
@@ -73,6 +90,12 @@ public class DateTimeParser {
         }
     }
 
+    /**
+     * Checks if the year from input is a leap year
+     *
+     * @param year user input of year
+     * @return true if leap year
+     */
     private static boolean checkLeapyr(int year) {
         if((year%4 == 0 && year%100 == 0) || year%400 == 0) {
             return true;
@@ -80,6 +103,15 @@ public class DateTimeParser {
         return false;
     }
 
+    /**
+     * Checks if the given date and year is correct
+     *
+     * @param d user input date
+     * @param m user input month
+     * @param y user input year
+     *
+     * @return true if date and time is correct
+     */
     private static boolean validDT(int d, int m, int y) {
 
         if(d<1 || d>31 || m<1 || m>12 || y<0)
@@ -100,6 +132,15 @@ public class DateTimeParser {
         return true;
     }
 
+    /**
+     * Returns formatted date
+     *
+     * @param d user input date
+     * @param m user input month
+     * @param y user input year
+     *
+     * @return formatted date
+     */
     private static String DateIN (int d, int m, int y) {
         String Fdate = "";
         int lastD = d%10;
@@ -139,7 +180,15 @@ public class DateTimeParser {
         return Fdate;
     }
 
-    private static String TimeIN(int t) throws DukeException {
+    /**
+     * returns formatted time
+     * @param t user input time
+     *
+     * @return Formatted time
+     *
+     * @throws DukeException when the user's time input is not in the correct format
+     */
+        private static String TimeIN(int t) throws DukeException {
         String tout;
         int hr, mins;
         if (t == 2400) t = 0000;

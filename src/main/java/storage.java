@@ -10,10 +10,16 @@ import java.util.Scanner;
 public class storage {
     public ArrayList<Task> tasks;
 
+
+
     storage() {
         tasks = new ArrayList<Task>();
     }
 
+    /**
+     * Loads the file when program re-runs
+     * @throws IOException
+     */
     public void dataOUT() throws IOException {
         FileWriter fileW = new FileWriter(System.getProperty("user.dir") + "/src/main/java/dukeDATA.txt", false);
         for (Task tsk : tasks) {
@@ -21,6 +27,14 @@ public class storage {
         }
         fileW.close();
     }
+
+    /**
+     * Takes in the new data given by user and updates the file
+     *
+     * @return tasks the final set of tasks in the list after all the alterations
+     * @throws FileNotFoundException when the file location is unclear
+     * @throws DukeException when there is an issue with writing the data in the file
+     */
 
     public ArrayList<Task> dataIN() throws FileNotFoundException, DukeException { //reader
 

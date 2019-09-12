@@ -12,6 +12,11 @@ public class parser {
     protected String[] ToFrom;
     protected int point;
 
+    /**
+     * Takes in the user input and splits it into sub sections which are used by the individual task actions
+     *
+     * @param s the String that contains the user input
+     */
     public parser(String s) {
         this.s = s;
         this.in = s.split(" "); //Delimtter function to split a string according to the parameter
@@ -19,6 +24,9 @@ public class parser {
         this.makeTask();
     }
 
+    /**
+     * Method which uses the user input to futrher make changes to the user input to be parsed into the tasklist class
+     */
     public void makeTask() {
         if(this.taskType.equals("todo")) {
             this.Description = this.s.substring(4);
@@ -36,7 +44,7 @@ public class parser {
             this.Description = newInput[0];
 
         } else if (this.taskType.equals("done")) {
-            int point = Integer.parseInt(in[1]) - 1;
+            this.point = Integer.parseInt(in[1]) - 1;
 
         } else if (this.taskType.equals("find")) {
             this.findDes = in[1];
@@ -47,30 +55,56 @@ public class parser {
         }
     }
 
+    /**
+     * Returns the of type of task from the user input
+     *
+     * @return the type of task
+     */
     public String getTaskType() {
         return taskType;
     }
 
+    /**
+     * Returns the index of the task in the list
+     *
+     * @return index of task in list
+     */
     public int getPoint() {
         return point;
     }
 
+    /**
+     * Returns the data stored in the by string
+     *
+     * @return data in by string
+     */
     public String getBy() {
         return by;
     }
 
+    /**
+     * Returns data stored in the at string
+     *
+     * @return data in the at string
+     */
     public String getAt() {
         return at;
     }
 
+    /**
+     * Returns the tasks that the user is finding using the find function
+     *
+     * @return data with the keyword from user
+     */
     public String getFindDes() {
         return findDes;
     }
 
-    public String[] getTiming() {
-        return ToFrom;
-    }
-
+    /**
+     * Returns data stored in the string description
+     *
+     * @return data in the string description
+     */
     public String getDescription() {
         return Description;
     }
